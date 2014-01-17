@@ -1,4 +1,6 @@
 SongBook::Application.routes.draw do
+  root 'artists#index'
+  #match '/artists', to: 'artists#index', via: 'get'
   resources :artists
 
   # The priority is based upon order of creation: first created -> highest priority.
