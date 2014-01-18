@@ -1,4 +1,5 @@
 class SongsController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   before_action :set_song, only: [:show, :edit, :update, :destroy]
 
   # GET /songs
@@ -7,6 +8,23 @@ class SongsController < ApplicationController
     @songs = Song.all
   end
 
+  def by_artist
+    begin
+      @artist = Artist.find params[:artist_id]
+    rescue ActiveRecord::RecordNotFound
+      respond_to do |format|
+        format.html { redirect_to artists_url }
+        format.json { head :no_content }
+      end
+    else
+      @songs = @artist.songs
+      respond_to do |format|
+        format.html
+        format.json { render json: @songs, action: 'index' }
+      end
+    end
+  end
+  
   # GET /songs/1
   # GET /songs/1.json
   def show
@@ -69,6 +87,22 @@ class SongsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_params
-      params.require(:song).permit(:title, :alias, :text, :artist_id)
+      params.require(:song).permit(:title, :url_alias, :text, :artist_id)
     end
+    
+    def song_artist
+      params.permit(:artist_id)
+    end
+    
+    def song_where
+      params.permit(:id, :url_alias, :artist_id)
+    end
+    
+    def record_not_found
+      respond_to do |format|
+        format.html { redirect_to songs_url }
+        format.json { head :no_content }
+      end
+    end
+    
 end

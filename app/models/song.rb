@@ -1,4 +1,4 @@
 class Song < ActiveRecord::Base
-  validates :title, :alias, presence: true
+  validates :title, :url_alias, presence: true
   belongs_to :artist
 end
