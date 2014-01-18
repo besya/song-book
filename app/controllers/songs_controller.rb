@@ -14,7 +14,7 @@ class SongsController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       respond_to do |format|
         format.html { redirect_to artists_url }
-        format.json { render json: { message: "RecordNotFound", error: 404 }, status: :unprocessable_entity }
+        format.json { render json: { message: "ArtistNotFound", error: 404 }, status: :unprocessable_entity }
       end
     else
       @songs = @artist.songs
