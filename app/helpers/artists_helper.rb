@@ -16,6 +16,7 @@ module ArtistsHelper
           pg_html += "<span class=\"page_link\">#{page}</span>"
         end
       end
+    when :short_list then
       if current_page == 1
         pg_html += "<span class=\"page_link current_page\"><b>#{pg_links[1]}</b></span>"
       else

@@ -3,8 +3,8 @@ SongBook::Application.routes.draw do
   root to: 'book#index', as: 'store'
   get "book/index"
 
-  match '/book/fill', to: 'book#fill', via: 'get', as: 'book_fill'
-  match '/book/clean', to: 'book#clean', via: 'get', as: 'book_clean'
+  match '/book/fill', to: 'book#fill', via: 'post', as: 'book_fill'
+  match '/book/clean', to: 'book#clean', via: 'post', as: 'book_clean'
 
   
   #match '/artists', to: 'artists#index', via: 'get'

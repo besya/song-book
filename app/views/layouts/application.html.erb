@@ -9,8 +9,8 @@
 <body>
 <%= link_to 'Artists', artists_path %>
 <%= link_to 'Songs', songs_path %>
-<%= link_to 'Fill', book_fill_path %>
-<%= link_to 'Clean', book_clean_path %>
+<%= link_to 'Fill', book_fill_path, method: :post, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Clean', book_clean_path, method: :post, data: { confirm: 'Are you sure?' } %>
 <%= yield %>
 
 </body>
