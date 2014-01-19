@@ -3,7 +3,7 @@ class Song < ActiveRecord::Base
   belongs_to :artist
 
   PerPage = 10
-  def self.page(pg)
+  def self.page(pg = 1)
     pg = pg.to_i
     self.order('title asc').offset((pg-1)*PerPage).limit(PerPage)
   end
