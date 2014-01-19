@@ -9,14 +9,11 @@ SongBook::Application.routes.draw do
   
   #match '/artists', to: 'artists#index', via: 'get'
   resources :artists
-  match "/artists", to: "artists#index", via: 'get'
-  match "/artists/page/:page", to: "artists#index", via: 'get'
+  match '/artists(/page/:page)', to: 'artists#index', via: 'get'
   
   resources :songs
-  match '/artists/:artist_id/songs', to: 'songs#by_artist', via: 'get', as: 'songs_by_artist'
-  match '/artists/:artist_id/songs/page/:page', to: 'songs#by_artist', via: 'get', as: 'songs_by_artist'
-  match "/songs", to: "songs#index", via: 'get'
-  match "/songs/page/:page", to: "songs#index", via: 'get'
+  match '/artists/:artist_id/songs(/page/:page)', to: 'songs#by_artist', via: 'get', as: 'songs_by_artist'
+  match '/songs(/page/:page)', to: 'songs#index', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
