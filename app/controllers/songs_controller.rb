@@ -1,5 +1,4 @@
 class SongsController < ApplicationController
-  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   before_action :set_song, only: [:show, :edit, :update, :destroy]
 
   # GET /songs
@@ -9,19 +8,11 @@ class SongsController < ApplicationController
   end
 
   def by_artist
-    begin
-      @artist = Artist.find params[:artist_id]
-    rescue ActiveRecord::RecordNotFound
-      respond_to do |format|
-        format.html { redirect_to artists_url }
-        format.json { render json: { message: "ArtistNotFound", error: 404 }, status: :unprocessable_entity }
-      end
-    else
-      @songs = @artist.songs
-      respond_to do |format|
-        format.html
-        format.json { render json: @songs, action: 'index' }
-      end
+    @artist = Artist.find params[:artist_id]
+    @songs = @artist.songs
+    respond_to do |format|
+      format.html
+      format.json { render json: @songs, action: 'index' }
     end
   end
   
@@ -96,13 +87,6 @@ class SongsController < ApplicationController
     
     def song_where
       params.permit(:id, :url_alias, :artist_id)
-    end
-    
-    def record_not_found
-      respond_to do |format|
-        format.html { redirect_to songs_url }
-        format.json { head :no_content }
-      end
     end
     
 end
