@@ -4,12 +4,14 @@ class SongsController < ApplicationController
   # GET /songs
   # GET /songs.json
   def index
-    @songs = Song.page(params[:page])   
+    page = (params[:page] || 1).to_i
+    @songs = Song.page(page)
   end
 
   def by_artist
     @artist = Artist.find params[:artist_id]
-    @songs = @artist.songs.page(params[:page])
+    page = (params[:page] || 1).to_i
+    @songs = @artist.songs.page(page)
     respond_to do |format|
       format.html
       format.json { render json: @songs, action: 'index' }
