@@ -4,10 +4,7 @@ class ArtistsController < ApplicationController
   # GET /artists
   # GET /artists.json
   def index
-    page = 1
-    if params[:page]
-      page = params[:page]
-    end
+    page = (params[:page] || 1).to_i
     @artists = Artist.page(page)
   end
 
