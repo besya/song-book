@@ -4,7 +4,7 @@ class ArtistsController < ApplicationController
   # GET /artists
   # GET /artists.json
   def index
-    @artists = Artist.page(page)
+    @artists = Artist.page(params[:page])
   end
 
   # GET /artists/1
