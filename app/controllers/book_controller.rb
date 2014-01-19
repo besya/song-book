@@ -4,13 +4,13 @@ class BookController < ApplicationController
   def fill
     Artist.destroy_all
     Song.destroy_all
-    5.times do |c|
+    20.times do |c|
       ar = Artist.new do |a|
         a.title = "Artist #{c}"
         a.url_alias = "artist-#{c}"
       end
       ar.save
-      5.times do |n|
+      20.times do |n|
         sg = Song.new do |s|
           s.artist_id = ar.id
           s.title = "Song #{c} #{n}"
