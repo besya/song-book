@@ -3,6 +3,9 @@ SongBook::Application.routes.draw do
 
   root to: 'book#index', as: 'store'
 
+  match '/book/fill', to: 'book#fill', via: 'get', as: 'book_fill'
+  match '/book/clean', to: 'book#clean', via: 'get', as: 'book_clean'
+
   get "book/index"
   
   #match '/artists', to: 'artists#index', via: 'get'
@@ -12,8 +15,6 @@ SongBook::Application.routes.draw do
   
   match "/songs(/page/:page)", to: "songs#index", via: 'get'
 
-  match '/book/fill', to: 'book#fill', via: 'get', as: 'book_fill'
-  match '/book/clean', to: 'book#clean', via: 'get', as: 'book_clean'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

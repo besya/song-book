@@ -26,6 +26,8 @@ class BookController < ApplicationController
     end
   end
   def clean
+    #ActiveRecord::Base.connection.execute("DELETE FROM artists")
+    #ActiveRecord::Base.connection.execute("DELETE FROM songs")
     Artist.destroy_all
     Song.destroy_all
     respond_to do |format|
