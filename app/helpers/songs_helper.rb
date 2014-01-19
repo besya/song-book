@@ -3,7 +3,7 @@ module SongsHelper
   def songs_paginate(style = :full_list)
     pg_html = ""
 
-    current_page = (params["page"] || 1).to_i
+    params["page"] ? current_page = params["page"].to_i : current_page = 1
 
     pg_links = songs_page_links
     
@@ -72,7 +72,7 @@ module SongsHelper
   def songs_by_artist_paginate(style = :full_list, artist)
     pg_html = ""
 
-    current_page = (params["page"] || 1).to_i
+    params["page"] ? current_page = params["page"].to_i : current_page = 1
 
     pg_links = songs_by_artist_page_links(artist)
     
