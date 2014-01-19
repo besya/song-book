@@ -1,3 +1,39 @@
 // Place all the styles related to the Artists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div#paginate{
+  width:100%;
+  background:#A4C639;
+  overflow:hidden;
+  padding:5px 0;
+}
+ 
+span.page_link{
+  float:left;
+  padding:2px;
+  border:1px solid #008000;
+  margin-left:5px;
+  background:#8DB600;
+  margin-top:5px;
+  line-height:1em;
+}
+ 
+.page_link a, .page_link a:visited {
+  color:#fff;
+  font-size:10px;
+  display:block;
+}
+.page_link a:hover{
+  color:#FDEE00;
+  background:none;
+}
+ 
+span.current_page{
+  border:1px solid #B31B1B;
+  background:#EB4C42;
+}
+ 
+span.first_page, span.last_page{
+  border:1px solid #2A52BE;
+  background:    #4997D0;
+}
