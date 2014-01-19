@@ -12,10 +12,6 @@ class SongsController < ApplicationController
     @artist = Artist.find params[:artist_id]
     page = (params[:page] || 1).to_i
     @songs = @artist.songs.page(page)
-    respond_to do |format|
-      format.html
-      format.json { render json: @songs, action: 'index' }
-    end
   end
   
   # GET /songs/1
